@@ -6,6 +6,14 @@
 
 #include <iostream>
 
+void calc_area_triangle(float base, float height) {
+    // calculate the area
+    float area = (base * height) / 2;
+
+    // display the area
+    std ::cout << "The area is " << area << " cm^2" << std::endl;
+}
+
 int main() {
     // declare variables
     std::string baseFromUserStr, heightFromUserStr;
@@ -19,23 +27,26 @@ int main() {
     std::cin >> heightFromUserStr;
 
     try {
-        // convert base and height to a float
+        // convert base to a float
         baseFromUserFloat = std::stof(baseFromUserStr);
+    } catch (std::invalid_argument) {
+        // if base is ! a number, then tell them to enter a number
+        std ::cout << baseFromUserStr << " is not a valid number. \n";
+    }
+
+    try {
+        // convert height to a float
         heightFromUserFloat = std::stof(heightFromUserStr);
 
-        // call the calc_area_triangle() function
-        calc_area_triangle(baseFromUserFloat, heightFromUserFloat);
+        // if the height or base <= 0, tell them to enter positive num
+        if (heightFromUserFloat <= 0 or baseFromUserFloat <= 0) {
+            std::cout << "Please enter a positive number." << std::endl;
+        } else {
+            // call the calc_area_triangle() function
+            calc_area_triangle(baseFromUserFloat, heightFromUserFloat);
+        }
     } catch (std::invalid_argument) {
-        // if base or height is ! a number, then tell them to enter a number
-        std ::cout << baseFromUserStr << " or " << heightFromUserStr
-        << " is not a valid number. \n";
+        // if height is ! a number, then tell them to enter a number
+        std ::cout << heightFromUserStr << " is not a valid number. \n";
     }
 }
-
-void calc_area_triangle(float base, float height) {
-        // calculate the area
-        float area = (base * height) / 2;
-
-        // display the area
-        std ::cout << "The area is " << area << " cm^2" << std::endl;
-    }
