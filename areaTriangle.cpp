@@ -27,16 +27,11 @@ int main() {
     std::cin >> heightFromUserStr;
 
     try {
-        // convert base to a float
-        baseFromUserFloat = std::stof(baseFromUserStr);
-    } catch (std::invalid_argument) {
-        // if base is ! a number, then tell them to enter a number
-        std ::cout << baseFromUserStr << " is not a valid number. \n";
-    }
-
-    try {
         // convert height to a float
         heightFromUserFloat = std::stof(heightFromUserStr);
+
+        // convert base to a float
+        baseFromUserFloat = std::stof(baseFromUserStr);
 
         // if the height or base <= 0, tell them to enter positive num
         if (heightFromUserFloat <= 0 || baseFromUserFloat <= 0) {
@@ -47,7 +42,8 @@ int main() {
             calc_area_triangle(baseFromUserFloat, heightFromUserFloat);
         }
     } catch (std::invalid_argument) {
-        // if height is ! a number, then tell them to enter a number
-        std ::cout << heightFromUserStr << " is not a valid number. \n";
+        // if height or base  is ! a number, then tell them to enter a number
+        std ::cout << heightFromUserStr << " or " << baseFromUserStr <<
+        " is not a valid number. \n";
     }
 }
