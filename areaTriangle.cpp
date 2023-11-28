@@ -39,8 +39,9 @@ int main() {
         heightFromUserFloat = std::stof(heightFromUserStr);
 
         // if the height or base <= 0, tell them to enter positive num
-        if (heightFromUserFloat <= 0 or baseFromUserFloat <= 0) {
-            std::cout << "Please enter a positive number." << std::endl;
+        if (heightFromUserFloat <= 0 || baseFromUserFloat <= 0) {
+            std::cout << "Please enter a positive number for both values."
+            << std::endl;
         } else {
             // call the calc_area_triangle() function
             calc_area_triangle(baseFromUserFloat, heightFromUserFloat);
